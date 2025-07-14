@@ -1,7 +1,13 @@
+using Internal_booking_app.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext <applicationdbcontext>(options => 
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    });
 
 var app = builder.Build();
 
