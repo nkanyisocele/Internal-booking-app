@@ -1,4 +1,5 @@
 using Internal_booking_app.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext <applicationdbcontext>(options => 
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    });
+    options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
