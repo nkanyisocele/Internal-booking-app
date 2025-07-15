@@ -1,14 +1,17 @@
 ﻿
-
+using Internal_booking_app.Models;
 using Microsoft.EntityFrameworkCore;
+
+
 
 namespace Internal_booking_app.Services
 {
-    public class applicationdbcontext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public applicationdbcontext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-
+            
         }
+        public DbSet<Resource> Resources { get; set; }
     }
 }
