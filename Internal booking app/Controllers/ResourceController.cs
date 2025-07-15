@@ -16,5 +16,10 @@ namespace Internal_booking_app.Controllers
             var resources = context.Resources.OrderByDescending(p => p.Id).ToList();
             return View(resources);
         }
+        public IActionResult Create()
+        {
+            
+            return View();
+        }
     }
 }
