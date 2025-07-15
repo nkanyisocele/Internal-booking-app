@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Resource> 
 @{
 }
+
+<h2 class="text-center mb-5">List Of Resources</h2>
+
+<div class="row mb-5">
+     <div class="col">
+            <a class="btn btn-primary" asp-controller="Resources" asp-action="Create">New Resource</a>
+     </div>
+     <div class="col">
+            
+     </div>
+</div>
+
+
+<table class="table">
+      <thead>
+	     <tr>
+	            <th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Location</th>
+				<th>Capacity</th>
+				<th>IsAvailable</th>
+				<th>Image</th>
+				<th>Action</th>
+	     </tr>
+	  </thead>
+	  
+      <tbody>
+	        @foreach (var resource in model)
+			{
+			    <tr>
+				        <td>@resource.Id</td>
+                        <td>@resource.Name</td>	
+                        <td>@resource.Description</td>
+                        <td>@resource.Location</td>	
+                        <td>@resource.Capacity</td>	
+                        <td>@resource.IsAvailable</td>
+						<td><img src="/resources/@resource.ImageFileName" width=100 /></td>	
+						<td style="white-space:nowrap">
+						    <a class="btn btn-primary btn-sm" asp-controller="Resources" asp-action="Edit"
+							   asp-route-id="@resource.Id">Edit</a>
+							<a class="btn btn-danger btn-sm" asp-controller="Resources" asp-action="Delete"
+							   asp-route-id="@resource.Id">Delete</a>
+						</td>      						
+			    </tr>
+			}	  
+      </tbody>
+</table>
